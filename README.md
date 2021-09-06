@@ -31,15 +31,15 @@ $ npm install advancelogger
 import { LogType, AdvanceLogger } from 'advancelogger';
 
 // Declaration & Initialization
-const Logger: AdvanceLogger = new AdvanceLogger();
+const logger: AdvanceLogger = new AdvanceLogger();
 
 // Logging
-Logger.log(LogType.WARNING, 'Test Log');
+logger.log(LogType.WARNING, 'Test Log');
 ```
 ###JS:
 ```js
 // Import
-const {AdvanceLogger, LogType} = require('advancelogger');
+const { AdvanceLogger, LogType } = require('advancelogger');
 
 // Declaration & Initialization
 const logger = new AdvanceLogger();
