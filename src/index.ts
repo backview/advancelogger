@@ -52,7 +52,7 @@ export class AdvanceLogger {
           re.exec(st), (m = re.exec(st));
           callerName = m[1] || m[2];
         }catch (ex: any) {
-          console.error(e);
+          // No Caller Method Name
         }
       }
       const log =
