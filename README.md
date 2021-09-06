@@ -1,10 +1,6 @@
 # AdvanceLogger
 A simple and optimized logging library for NodeJS
-[![NPM Version][npm-image]][npm-url]
-[![NPM Downloads][downloads-image]][downloads-url]
-[![Linux Build][ci-image]][ci-url]
-[![Windows Build][appveyor-image]][appveyor-url]
-[![Test Coverage][coveralls-image]][coveralls-url]
+
 ## Installation
 
 This is a [Node.js](https://nodejs.org/en/) module available through the
@@ -22,3 +18,8 @@ Installation is done using the
 ```bash
 $ npm install advancelogger
 ```
+## Features
+
+* Fast logging
+* Focus on high performance
+* Super-high test coverage
