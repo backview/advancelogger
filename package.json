@@ -1,5 +1,5 @@
 {
-  "name": "nodelogger",
+  "name": "nodejslogger",
   "version": "1.0.0",
   "description": "A simple and optimized logging library",
   "main": "lib/index.js",
