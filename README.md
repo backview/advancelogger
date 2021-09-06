@@ -1,2 +1,2 @@
 # AdvanceLogger
-A simple and optimized logging library
+A simple and optimized logging library for NodeJS
