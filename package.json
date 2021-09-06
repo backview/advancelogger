@@ -1,5 +1,5 @@
 {
-  "name": "nodejslogger",
+  "name": "advancelogger",
   "version": "1.0.0",
   "description": "A simple and optimized logging library",
   "main": "lib/index.js",
@@ -7,12 +7,12 @@
   "author": "BackView",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/backview/nodelogger.git"
+    "url": "git+https://github.com/backview/advancelogger.git"
   },
   "scripts": {
     "test": "del-cli ./lognode.log && jest --config jestconfig.json && del-cli ./lognode.log",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",

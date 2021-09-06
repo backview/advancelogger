@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-export class NodeLogger {
+export class AdvanceLogger {
   public logFilePath: string = './lognode.log';
   public logTimeFormat: string = 'DD/MM/YYYY - HH:mm:ss:ms';
   public logFormat: string = 'TIME LOGTYPE CALLERNAME TEXT';

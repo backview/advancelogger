@@ -1,4 +1,4 @@
-import { LogType, NodeLogger } from '../index';
+import { LogType, AdvanceLogger } from '../index';
 import * as fs from 'fs';
 let checkIfFileExist = (filepath: string, timeout: number, callback: any, time = 0) => {
   if (fs.existsSync(filepath)) {
@@ -30,7 +30,7 @@ let checkIfTextIsPresent = (filepath: string, timeout: number, callback: any, te
   }
 };
 test('Add Log DEBUG', (callback) => {
-  const Logger: NodeLogger = new NodeLogger();
+  const Logger: AdvanceLogger = new AdvanceLogger();
   Logger.log(LogType.DEBUG, 'Test Log #0987665443');
   checkIfFileExist(Logger.logFilePath, 10000, (result: boolean) => {
     checkIfTextIsPresent(
@@ -46,7 +46,7 @@ test('Add Log DEBUG', (callback) => {
 }, 10000);
 
 test('Add Log ERROR', (callback) => {
-  const Logger: NodeLogger = new NodeLogger();
+  const Logger: AdvanceLogger = new AdvanceLogger();
   Logger.log(LogType.ERROR, 'Test Log #09876654433');
   checkIfFileExist(Logger.logFilePath, 10000, (result: boolean) => {
     checkIfTextIsPresent(
@@ -62,7 +62,7 @@ test('Add Log ERROR', (callback) => {
 }, 10000);
 
 test('Add Log WARNING', (callback) => {
-  const Logger: NodeLogger = new NodeLogger();
+  const Logger: AdvanceLogger = new AdvanceLogger();
   Logger.log(LogType.WARNING, 'Test Log #09876654436');
   checkIfFileExist(Logger.logFilePath, 10000, (result: boolean) => {
     checkIfTextIsPresent(

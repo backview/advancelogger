@@ -1,9 +1,9 @@
-import { NodeLogger } from '../index';
+import { AdvanceLogger } from '../index';
 test('Constructor all OK check', () => {
   expect(
     (() => {
       try {
-        new NodeLogger();
+        new AdvanceLogger();
       } catch (e) {
         return e;
       }
