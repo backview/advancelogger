@@ -67,7 +67,23 @@ export class AdvanceLogger {
           .replace('TEXT', '' + text) + '\n';
 
       if(this.consoleLogsEnabled){
-        console.log(log);
+        switch (logtype){
+          case LogType.DEBUG:
+          {
+            console.log(log);
+          }
+            break;
+          case LogType.ERROR:
+          {
+            console.error(log);
+          }
+            break;
+          case LogType.WARNING:
+          {
+            console.warn(log);
+          }
+            break;
+        }
       }
 
       fs.stat(this.logFilePath, (err, stats) => {
