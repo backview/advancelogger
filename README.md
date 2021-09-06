@@ -25,7 +25,7 @@ $ npm install advancelogger
 * Super-high test coverage
 ## Basic Usage
 
-###TS:
+### TS:
 ```ts
 // Import
 import { LogType, AdvanceLogger } from 'advancelogger';
@@ -36,7 +36,7 @@ const logger: AdvanceLogger = new AdvanceLogger();
 // Logging
 logger.log(LogType.WARNING, 'Test Log');
 ```
-###JS:
+### JS:
 ```js
 // Import
 const { AdvanceLogger, LogType } = require('advancelogger');
