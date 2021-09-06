@@ -5,8 +5,9 @@ export class AdvanceLogger {
   public logTimeFormat: string = 'DD/MM/YYYY - HH:mm:ss:ms';
   public logFormat: string = 'TIME LOGTYPE CALLERNAME TEXT';
   public maxLogFileSize: number = 10;
+  public consoleLogsEnabled: boolean = false;
 
-  constructor(options?: { logFilePath?: string; logTimeFormat?: string; logFormat?: string; maxLogFileSize?: number }) {
+  constructor(options?: { logFilePath?: string; logTimeFormat?: string; logFormat?: string; maxLogFileSize?: number, consoleLogsEnabled?: boolean }) {
     if (options) {
       if (options.logFilePath) {
         this.logFilePath = options.logFilePath;
@@ -19,6 +20,9 @@ export class AdvanceLogger {
       }
       if (options.maxLogFileSize) {
         this.maxLogFileSize = options.maxLogFileSize;
+      }
+      if (options.consoleLogsEnabled) {
+        this.consoleLogsEnabled = options.consoleLogsEnabled;
       }
     }
   }
@@ -62,7 +66,9 @@ export class AdvanceLogger {
           .replace('LOGTYPE', '' + logtype)
           .replace('TEXT', '' + text) + '\n';
 
-      console.log(log);
+      if(this.consoleLogsEnabled){
+        console.log(log);
+      }
 
       fs.stat(this.logFilePath, (err, stats) => {
         if (err) {
