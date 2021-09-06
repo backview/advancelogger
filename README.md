@@ -23,3 +23,27 @@ $ npm install advancelogger
 * Fast logging
 * Focus on high performance
 * Super-high test coverage
+## Basic Usage
+
+###TS:
+```ts
+// Import
+import { LogType, AdvanceLogger } from 'advancelogger';
+
+// Declaration & Initialization
+const Logger: AdvanceLogger = new AdvanceLogger();
+
+// Logging
+Logger.log(LogType.WARNING, 'Test Log');
+```
+###JS:
+```js
+// Import
+const {AdvanceLogger, LogType} = require('advancelogger');
+
+// Declaration & Initialization
+const logger = new AdvanceLogger();
+
+// Logging
+logger.log(LogType.DEBUG, 'Test Log')
+```
