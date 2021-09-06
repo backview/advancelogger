@@ -52,7 +52,7 @@ export class AdvanceLogger {
           re.exec(st), (m = re.exec(st));
           callerName = m[1] || m[2];
         }catch (ex: any) {
-
+          console.error(e);
         }
       }
       const log =
@@ -72,16 +72,16 @@ export class AdvanceLogger {
           const fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
           if (fileSizeInMegabytes > this.maxLogFileSize) {
             fs.rename(this.logFilePath, this.logFilePath + '_' + Date.now(), (error) => {
-              if (error) console.log('ERROR rename: ' + error);
+              if (error) console.error('ERROR rename: ' + error);
             });
           }
         }
         fs.appendFile(this.logFilePath, log, (error) => {
-          if (error) console.log('ERROR appendFile: ' + error);
+          if (error) console.error('ERROR appendFile: ' + error);
         });
       });
     } catch (e) {
-      console.log('ERROR: ' + e);
+      console.error('ERROR: ' + e);
     }
   }
 }
