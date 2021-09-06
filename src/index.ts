@@ -45,11 +45,15 @@ export class AdvanceLogger {
       try {
         throw new Error();
       } catch (e: any) {
-        const re: any = /(\w+)@|at (\w+) \(/g;
-        let m: any;
-        const st: any = e.stack;
-        re.exec(st), (m = re.exec(st));
-        callerName = m[1] || m[2];
+        try {
+          const re: any = /(\w+)@|at (\w+) \(/g;
+          let m: any;
+          const st: any = e.stack;
+          re.exec(st), (m = re.exec(st));
+          callerName = m[1] || m[2];
+        }catch (ex: any) {
+
+        }
       }
       const log =
         this.logFormat
