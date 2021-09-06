@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/backview/advancelogger.git"
   },
+  "bugs": {
+    "url": "https://github.com/backview/advancelogger/issues"
+  },
   "scripts": {
     "test": "del-cli ./lognode.log && jest --config jestconfig.json && del-cli ./lognode.log",
     "build": "tsc",
