@@ -35,7 +35,9 @@ import { LogType, AdvanceLogger } from 'advancelogger';
 const logger: AdvanceLogger = new AdvanceLogger();
 
 // Logging
-logger.log(LogType.WARNING, 'Test Log');
+logger.log(LogType.DEBUG, 'Test Log Debug');
+logger.log(LogType.WARNING, 'Test Log Warning');
+logger.log(LogType.ERROR, 'Test Log Error');
 ```
 ### JS:
 ```js
@@ -46,7 +48,9 @@ const { AdvanceLogger, LogType } = require('advancelogger');
 const logger = new AdvanceLogger();
 
 // Logging
-logger.log(LogType.DEBUG, 'Test Log')
+logger.log(LogType.DEBUG, 'Test Log Debug');
+logger.log(LogType.WARNING, 'Test Log Warning');
+logger.log(LogType.ERROR, 'Test Log Error');
 ```
 
 ## Advance Usage
@@ -67,7 +71,9 @@ const options = {
 const logger: AdvanceLogger = new AdvanceLogger(options);
 
 // Logging
-logger.log(LogType.WARNING, 'Test Log');
+logger.log(LogType.DEBUG, 'Test Log Debug');
+logger.log(LogType.WARNING, 'Test Log Warning');
+logger.log(LogType.ERROR, 'Test Log Error');
 ```
 
 ### JS:
@@ -86,7 +92,9 @@ const options = {
 const logger: AdvanceLogger = new AdvanceLogger(options);
 
 // Logging
-logger.log(LogType.WARNING, 'Test Log');
+logger.log(LogType.DEBUG, 'Test Log Debug');
+logger.log(LogType.WARNING, 'Test Log Warning');
+logger.log(LogType.ERROR, 'Test Log Error');
 ```
 
 ### Options:
