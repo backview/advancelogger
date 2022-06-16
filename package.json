@@ -21,7 +21,8 @@
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "publish_private": "npm publish --registry http://backview.ddns.net:4873/\n"
   },
   "keywords": [
     "NodeJS",

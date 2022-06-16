@@ -31,26 +31,20 @@ $ npm install advancelogger
 // Import
 import { LogType, AdvanceLogger } from 'advancelogger';
 
-// Declaration & Initialization
-const logger: AdvanceLogger = new AdvanceLogger();
-
 // Logging
-logger.log(LogType.DEBUG, 'Test Log Debug');
-logger.log(LogType.WARNING, 'Test Log Warning');
-logger.log(LogType.ERROR, 'Test Log Error');
+AdvanceLogger.log(LogType.DEBUG, 'Test Log Debug');
+AdvanceLogger.log(LogType.WARNING, 'Test Log Warning');
+AdvanceLogger.log(LogType.ERROR, 'Test Log Error');
 ```
 ### JS:
 ```js
 // Import
 const { AdvanceLogger, LogType } = require('advancelogger');
 
-// Declaration & Initialization
-const logger = new AdvanceLogger();
-
 // Logging
-logger.log(LogType.DEBUG, 'Test Log Debug');
-logger.log(LogType.WARNING, 'Test Log Warning');
-logger.log(LogType.ERROR, 'Test Log Error');
+AdvanceLogger.log(LogType.DEBUG, 'Test Log Debug');
+AdvanceLogger.log(LogType.WARNING, 'Test Log Warning');
+AdvanceLogger.log(LogType.ERROR, 'Test Log Error');
 ```
 
 ## Advance Usage
@@ -68,12 +62,13 @@ const options = {
   maxLogFileSize: 10,
   consoleLogsEnabled: false
 };
-const logger: AdvanceLogger = new AdvanceLogger(options);
+
+AdvanceLogger.Init(options);
 
 // Logging
-logger.log(LogType.DEBUG, 'Test Log Debug');
-logger.log(LogType.WARNING, 'Test Log Warning');
-logger.log(LogType.ERROR, 'Test Log Error');
+AdvanceLogger.log(LogType.DEBUG, 'Test Log Debug');
+AdvanceLogger.log(LogType.WARNING, 'Test Log Warning');
+AdvanceLogger.log(LogType.ERROR, 'Test Log Error');
 ```
 
 ### JS:
@@ -89,12 +84,13 @@ const options = {
   maxLogFileSize: 10,
   consoleLogsEnabled: false
 };
-const logger: AdvanceLogger = new AdvanceLogger(options);
+
+AdvanceLogger.Init(options);
 
 // Logging
-logger.log(LogType.DEBUG, 'Test Log Debug');
-logger.log(LogType.WARNING, 'Test Log Warning');
-logger.log(LogType.ERROR, 'Test Log Error');
+AdvanceLogger.log(LogType.DEBUG, 'Test Log Debug');
+AdvanceLogger.log(LogType.WARNING, 'Test Log Warning');
+AdvanceLogger.log(LogType.ERROR, 'Test Log Error');
 ```
 
 ### Options:
