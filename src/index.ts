@@ -1,33 +1,37 @@
 import * as fs from 'fs';
+import {dirname} from 'path';
 
 export class AdvanceLogger {
-  public logFilePath: string = './lognode.log';
-  public logTimeFormat: string = 'DD/MM/YYYY - HH:mm:ss:ms';
-  public logFormat: string = 'TIME LOGTYPE CALLERNAME TEXT';
-  public maxLogFileSize: number = 10;
-  public consoleLogsEnabled: boolean = false;
+  public static logFilePath: string = './lognode.log';
+  public static logTimeFormat: string = 'DD/MM/YYYY - HH:mm:ss:ms';
+  public static logFormat: string = 'TIME LOGTYPE TEXT';
+  public static maxLogFileSize: number = 10;
+  public static consoleLogsEnabled: boolean = false;
 
-  constructor(options?: { logFilePath?: string; logTimeFormat?: string; logFormat?: string; maxLogFileSize?: number, consoleLogsEnabled?: boolean }) {
+  static Init(options?: { logFilePath?: string; logTimeFormat?: string; logFormat?: string; maxLogFileSize?: number, consoleLogsEnabled?: boolean }) {
     if (options) {
       if (options.logFilePath) {
-        this.logFilePath = options.logFilePath;
+        AdvanceLogger.logFilePath = options.logFilePath;
       }
       if (options.logTimeFormat) {
-        this.logTimeFormat = options.logTimeFormat;
+        AdvanceLogger.logTimeFormat = options.logTimeFormat;
       }
       if (options.logFormat) {
-        this.logFormat = options.logFormat;
+        AdvanceLogger.logFormat = options.logFormat;
       }
       if (options.maxLogFileSize) {
-        this.maxLogFileSize = options.maxLogFileSize;
+        AdvanceLogger.maxLogFileSize = options.maxLogFileSize;
       }
       if (options.consoleLogsEnabled) {
-        this.consoleLogsEnabled = options.consoleLogsEnabled;
+        AdvanceLogger.consoleLogsEnabled = options.consoleLogsEnabled;
       }
+    }
+    if (!fs.existsSync(dirname(this.logFilePath))){
+      fs.mkdirSync(dirname(this.logFilePath), { recursive: true });
     }
   }
 
-  log(logtype: LogType, text: string): void {
+  static log(logtype: LogType, text: string): void {
     try {
       const date = new Date();
       const hours = date.getHours();
@@ -45,28 +49,13 @@ export class AdvanceLogger {
         .replace('mm', '' + minutes.substr(-2))
         .replace('ss', '' + seconds.substr(-2))
         .replace('ms', '' + milliseconds.substr(-3));
-      let callerName = 'Anonymous';
-      try {
-        throw new Error();
-      } catch (e: any) {
-        try {
-          const re: any = /(\w+)@|at (\w+) \(/g;
-          let m: any;
-          const st: any = e.stack;
-          re.exec(st), (m = re.exec(st));
-          callerName = m[1] || m[2];
-        }catch (ex: any) {
-          // No Caller Method Name
-        }
-      }
       const log =
-        this.logFormat
+        AdvanceLogger.logFormat
           .replace('TIME', '' + formattedTime)
-          .replace('CALLERNAME', '' + callerName)
           .replace('LOGTYPE', '' + logtype)
           .replace('TEXT', '' + text) + '\n';
 
-      if(this.consoleLogsEnabled){
+      if(AdvanceLogger.consoleLogsEnabled){
         switch (logtype){
           case LogType.DEBUG:
           {
@@ -86,19 +75,19 @@ export class AdvanceLogger {
         }
       }
 
-      fs.stat(this.logFilePath, (err, stats) => {
+      fs.stat(AdvanceLogger.logFilePath, (err, stats) => {
         if (err) {
           // Log File doesn't exist. Creating a new one.
         } else {
           const fileSizeInBytes = stats.size;
           const fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
-          if (fileSizeInMegabytes > this.maxLogFileSize) {
-            fs.rename(this.logFilePath, this.logFilePath + '_' + Date.now(), (error) => {
+          if (fileSizeInMegabytes > AdvanceLogger.maxLogFileSize) {
+            fs.rename(AdvanceLogger.logFilePath, AdvanceLogger.logFilePath + '_' + Date.now(), (error) => {
               if (error) console.error('ERROR rename: ' + error);
             });
           }
         }
-        fs.appendFile(this.logFilePath, log, (error) => {
+        fs.appendFile(AdvanceLogger.logFilePath, log, (error) => {
           if (error) console.error('ERROR appendFile: ' + error);
         });
       });
@@ -108,7 +97,7 @@ export class AdvanceLogger {
   }
 }
 
-export enum LogType {
+export enum  LogType {
   DEBUG = 'DEBUG',
   ERROR = 'ERROR',
   WARNING = 'WARNING',
