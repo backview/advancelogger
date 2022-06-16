@@ -30,49 +30,46 @@ let checkIfTextIsPresent = (filepath: string, timeout: number, callback: any, te
   }
 };
 test('Add Log DEBUG', (callback) => {
-  const Logger: AdvanceLogger = new AdvanceLogger();
-  Logger.log(LogType.DEBUG, 'Test Log #0987665443');
-  checkIfFileExist(Logger.logFilePath, 10000, (result: boolean) => {
+  AdvanceLogger.log(LogType.DEBUG, 'Test Log #0987665443');
+  checkIfFileExist(AdvanceLogger.logFilePath, 10000, (result: boolean) => {
     checkIfTextIsPresent(
-      Logger.logFilePath,
+      AdvanceLogger.logFilePath,
       10000,
       (result2: boolean) => {
         expect(result2).toBeTruthy();
         callback();
       },
-      'DEBUG _callCircusTest Test Log #0987665443',
+      'DEBUG Test Log #0987665443',
     );
   });
 }, 10000);
 
 test('Add Log ERROR', (callback) => {
-  const Logger: AdvanceLogger = new AdvanceLogger();
-  Logger.log(LogType.ERROR, 'Test Log #09876654433');
-  checkIfFileExist(Logger.logFilePath, 10000, (result: boolean) => {
+  AdvanceLogger.log(LogType.ERROR, 'Test Log #09876654433');
+  checkIfFileExist(AdvanceLogger.logFilePath, 10000, (result: boolean) => {
     checkIfTextIsPresent(
-      Logger.logFilePath,
+      AdvanceLogger.logFilePath,
       10000,
       (result2: boolean) => {
         expect(result2).toBeTruthy();
         callback();
       },
-      'ERROR _callCircusTest Test Log #09876654433',
+      'ERROR Test Log #09876654433',
     );
   });
 }, 10000);
 
 test('Add Log WARNING', (callback) => {
-  const Logger: AdvanceLogger = new AdvanceLogger();
-  Logger.log(LogType.WARNING, 'Test Log #09876654436');
-  checkIfFileExist(Logger.logFilePath, 10000, (result: boolean) => {
+  AdvanceLogger.log(LogType.WARNING, 'Test Log #09876654436');
+  checkIfFileExist(AdvanceLogger.logFilePath, 10000, (result: boolean) => {
     checkIfTextIsPresent(
-      Logger.logFilePath,
+      AdvanceLogger.logFilePath,
       10000,
       (result2: boolean) => {
         expect(result2).toBeTruthy();
         callback();
       },
-      'WARNING _callCircusTest Test Log #09876654436',
+      'WARNING Test Log #09876654436',
     );
   });
 }, 10000);
